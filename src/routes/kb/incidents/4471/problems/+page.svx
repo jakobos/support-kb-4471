@@ -1,0 +1,51 @@
+---
+layout: runbook
+title: '#4471 · what the merged reports show'
+owner: Jakub Skwara
+status: open
+reviewed: 2026-10-30
+signature: Jakub Skwara
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+[#4471](/kb/incidents/4471) is marked known: one issue, one fix queued. Read report by report,
+the merged reports describe more than one bug. Each bug below has a ticket of its own, so a fix
+for one does not close the others.
+
+<Callout kind="warn">
+The queued parser fix does not fix the other problems. Keep #4471's reports for the other
+problems open until their own tickets are fixed.
+</Callout>
+
+## How each report is placed
+
+1. **One report per id.** The export pages overlap, so some reports come twice.
+   They are counted once.
+2. **Tenant, not browser.** The cause depends on the tenant's locale and booking form
+   (`causes.ts`), not on intake's tag, which is a guess from the reporter's browser.
+3. **What moved.** When day and month trade places, the cause is the shared parser,
+   or the booking-v3 form hint for reports sent through that form. When the date moves by one
+   day, no parser or form hint explains it: the desk's one-day-move list (`desk-notes.json`)
+   names those reports, and they get their own problem here instead of a footnote under `parser`.
+
+## The problems
+
+<ProblemTable ticket={4471} />
+
+## What this changes for the desk
+
+- **Merge on cause, not on subject.** The same subject lines turn up under different problems,
+  so [decision 0001](/kb/decisions/0001-dedupe-by-subject) puts different bugs in one ticket.
+  A new decision record should replace it; this page does not edit it.
+- **Tag by tenant.** Intake's tag disagrees with the tenant's cause often enough that the tag
+  alone cannot route a report.
+- **Read the outliers.** The one-day reports were already noted by the desk and still counted
+  as parser reports. A small group with a different symptom is a different bug until shown
+  otherwise.
+
+<RenderStamp {signature} />
