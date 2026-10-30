@@ -4,7 +4,7 @@ title: '#4471 · what the merged reports show'
 owner: Jakub Skwara
 status: open
 reviewed: 2026-10-30
-signature: Jakub Skwara
+signature: v1.eyJzdWIiOiIyNzkiLCJhdWQiOiJjaGFsbGVuZ2U6d2hhdC1pdC1zaG93cyIsImlhdCI6MTc5MzM0MjI1MiwiZXhwIjoxNzkzNDI4NjUyfQ.SE9g_7sbftohFV5KQGiEBLmfVXrrG53p_rqIuH9YEkA
 ---
 
 <script>
